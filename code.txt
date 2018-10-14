@@ -1,0 +1,49 @@
+using System;
+using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Windows.Forms;
+
+class OvalPictureBox : PictureBox {
+    public OvalPictureBox() {
+        this.BackColor = Color.DarkGray;
+    }
+    protected override void OnResize(EventArgs e) {
+        base.OnResize(e);
+        using (var gp = new GraphicsPath()) {
+            gp.AddEllipse(new Rectangle(0, 0, this.Width-1, this.Height-1));
+            this.Region = new Region(gp);
+        }
+    }
+}
+=========================================================
+   this.Hide();
+            ADD_BILL add_bill = new ADD_BILL();
+            add_bill.Show();
+========================================================
+             TextReader sr = new StreamReader(@"C:\Users\mz333\Desktop\data.txt");
+            String line;
+            line = sr.ReadLine();
+
+            while (line != null)
+            {
+                //write the lie to console window
+                dataGridView1.Rows.Add(line);
+                //Read the next line
+                 line = sr.ReadLine();
+            }
+            sr.Close();
+========================================================
+            TextWriter sw = new StreamWriter(@"C:\Users\mz333\Desktop\data.txt", true);
+            sw.WriteLine(textBox1.Text);
+            sw.Close();
+            textBox1.Text = "";
+            textBox1.Select();
+=============================================================
+
+                
+
+
+
+
+
+
