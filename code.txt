@@ -46,7 +46,17 @@ class OvalPictureBox : PictureBox {
 
 this.ControlBox = false;
        ===============================================================     
-            
+               public void RemoveText(object sender, EventArgs e)
+        {
+           pass_txt.Text = "";
+        }
+
+        public void AddText(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(pass_txt.Text))
+                pass_txt.Text = "Enter text here...";
+        }
+        ===============================================================
             
                 
 
