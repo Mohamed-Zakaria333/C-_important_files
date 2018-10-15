@@ -79,7 +79,8 @@ this.ControlBox = false;
        ====================================================
        form1.FormBorderStyle = FormBorderStyle.FixedSingle;
       =====================================================
-
+        label:- autosize= fales
+        ====================================
 
 
 
