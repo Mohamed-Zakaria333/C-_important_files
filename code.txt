@@ -43,8 +43,9 @@ class OvalPictureBox : PictureBox {
             this.Close();
             f1.Show();
             MessageBox.Show("هل تحتوى هذة الفاتورة على خصومات","الخصومات",MessageBoxButtons.YesNo);
-            
-            
+
+this.ControlBox = false;
+       ===============================================================     
             
             
                 
