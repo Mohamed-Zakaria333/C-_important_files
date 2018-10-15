@@ -74,6 +74,10 @@ this.ControlBox = false;
                 
                 
         }
+        this.dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+       ALLOW USER TO ADD ROWS = FALSE;
+       ====================================================
+
 
 
 
