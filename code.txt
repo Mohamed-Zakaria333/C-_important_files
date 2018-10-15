@@ -39,7 +39,14 @@ class OvalPictureBox : PictureBox {
             textBox1.Text = "";
             textBox1.Select();
 =============================================================
-
+ Form1 f1 = new Form1();
+            this.Close();
+            f1.Show();
+            MessageBox.Show("هل تحتوى هذة الفاتورة على خصومات","الخصومات",MessageBoxButtons.YesNo);
+            
+            
+            
+            
                 
 
 
