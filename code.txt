@@ -62,7 +62,18 @@ this.ControlBox = false;
                  pass_txt.TextAlign = HorizontalAlignment.Center;
                  ====================================================
                 
-
+لما ادوس على ذر الكلوس يقفل البرنامج
+      private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+                1)System.Windows.Forms.Application.Exit( )  ;
+                2) System.Windows.Forms.Application.ExitThread();
+                3) this.close( ); 
+                
+                
+                
+                
+                
+        }
 
 
 
