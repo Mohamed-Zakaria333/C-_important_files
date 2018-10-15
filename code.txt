@@ -57,7 +57,10 @@ this.ControlBox = false;
                 pass_txt.Text = "Enter text here...";
         }
         ===============================================================
-            
+          pass_txt.Text = "الرقم السرى";
+                 pass_txt.ForeColor = Color.Silver;
+                 pass_txt.TextAlign = HorizontalAlignment.Center;
+                 ====================================================
                 
 
 
