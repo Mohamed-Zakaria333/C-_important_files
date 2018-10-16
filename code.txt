@@ -81,6 +81,21 @@ this.ControlBox = false;
       =====================================================
         label:- autosize= fales
         ====================================
+ EMPEADED_TXT FILES
+ 
+ اسم النام سباس+اسم الفولدر+اسم الملف
+  Assembly a1 = Assembly.GetExecutingAssembly();
+            StreamReader sr = new StreamReader(a1.GetManifestResourceStream("Abo_abdo.medo.medoo.txt"));
+            String line;
+            line = sr.ReadLine();
 
-
+            while (line != null)
+            {
+                //write the lie to console window
+                System.Console.WriteLine(line);
+                //Read the next line
+                line = sr.ReadLine();
+            }
+            sr.Close();
+===========================================================
 
