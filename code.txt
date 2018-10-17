@@ -125,7 +125,7 @@ if (amount.Text == "" || Regex.IsMatch(amount.Text,"[a-zA-Z]"))
             الطباعة
             1)printPreviewDialog  >>>>>>>>>>>>>علشان اخلية يملى الشاشة اعملة تحويل الى النوع فورم عن طريق الwindow state
             هنا خلى بالك الpreview دة لازم اديلة الdocument اللى هيشتغل عليها من خلال الproberities بتاعتة
-            2)printPreviewDocumen>>>>>>>>دوس عليها دبل كليك علشان نعمل تصميم الصفحة
+            2)printDocumen>>>>>>>>دوس عليها دبل كليك علشان نعمل تصميم الصفحة
             {
             event e .GRAPHICS.drawimage(هنجيب  الصورة من البروبيرتيز properities.resources.اسم الصورة,position);
             position (top,left.bottom,right,width,height)
