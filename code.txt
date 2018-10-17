@@ -100,3 +100,54 @@ this.ControlBox = false;
 ===========================================================
 PUPLISH PROGRAME
 BUILD->BUBLISH
+===========================================================
+بيفحص لو التكست فيلد يحتوى على حروف ولا لا 
+
+if (amount.Text == "" || Regex.IsMatch(amount.Text,"[a-zA-Z]"))
+=============================================================
+
+
+علشان اخلى اول عنصر ظاهلر فى الكومبوبوكس
+  name_combo.SelectedIndex = 0;
+            size_combo.SelectedIndex = 0;
+            type_combo.SelectedIndex = 0;
+            ====================================
+            علشان ابحث فى الكومبوبوكس
+            ِAutoCompletemode = suggested Apended;
+            AutocompleteSource = listItems;
+            =====================================
+            
+            
+            
+            
+            
+
+
+
+
+
+
+
+
+
+
+
+
+            {
+
+                MessageBox.Show("ادخل الكمية");
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
