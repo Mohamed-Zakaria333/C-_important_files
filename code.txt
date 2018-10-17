@@ -173,8 +173,38 @@ if (amount.Text == "" || Regex.IsMatch(amount.Text,"[a-zA-Z]"))
             CASTING in C#
             ((newType)oldtype).
             EX:((Form)preview).WindowState = FormWindowState.Maximized;
-            ===============================
-            
+            ==================================================================================
+               System.Console.WriteLine(e.PageBounds.Width);
+            System.Console.WriteLine(e.PageBounds.Height);
+            e.Graphics.DrawImage(Properties.Resources.logo2, 5, 5, 200, 200);
+            e.Graphics.DrawRectangle(Pens.Black, 25, 250, e.PageBounds.Width-50, table_height);
+            int X_left = 25;
+            int y_left = 250;
+            int X_right = 825;
+            int y_right = 250;
+            int row_height = 30;
+            //coulmn1
+            int col1X_top = 0, col1Y_top = 0, col1X_Bottom = 0, col1Y_bottom = 0;
+            //coulmn2
+            int col2X_top = 0, col2Y_top = 0, col2X_Bottom = 0, col2Y_bottom = 0;
+            //coulmn3
+            int col3X_top = 0, col3Y_top = 0, col3X_Bottom = 0, col3Y_bottom = 0;
+            //coulmn4
+            int col4X_top = 0, col4Y_top = 0, col4X_Bottom = 0, col4Y_bottom = 0;
+            //coulmn5
+            int col5X_top = 0, col5Y_top = 0, col5X_Bottom = 0, col5Y_bottom = 0;
+            //coulmn6
+            int col6X_top = 0, col6Y_top = 0, col6X_Bottom = 0, col6Y_bottom = 0;
+
+
+
+            for (int i=0;i<10;i++)
+            {
+
+                e.Graphics.DrawLine(Pens.Black, X_left, y_left+row_height, X_right, y_right+row_height);
+                counter += 30;
+
+            }
 
 
 
