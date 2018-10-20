@@ -205,8 +205,236 @@ if (amount.Text == "" || Regex.IsMatch(amount.Text,"[a-zA-Z]"))
                 counter += 30;
 
             }
+//============================================================================================================
+//الفاتورة اعم الحج
+  private void theDocument_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            //variables
+            //================
+            int page_W = e.PageBounds.Width;
+            int page_H = e.PageBounds.Height;
+            int left_page_margin = 25;
+            int top_page_margin = 25;
+            int rect_header_h = 190;
+            int rect_body_h = 725;
+            int rect_footer_h = 100;
+            int right_page_margin = 100;
+            int col_width = 95;
+            int row_counter = 30;
+            int cell_padding_right = 15;
+            int cell_padding_top = 5;
+
+            //===============================
+            string grid_ID;
+            string grid_product;
+            string grid_unit;
+            string grid_one_price;
+            string grid_amount;
+            string grid_total_price;
+            string grid_code;
+            
+            //====================================
+            StringFormat format = new StringFormat(StringFormatFlags.DirectionRightToLeft);
 
 
+
+
+            //====================================
+
+
+
+
+
+            //fonts
+            //================
+            Font myfont = new Font("Arial", 15, FontStyle.Regular);
+            Font Results_font = new Font("Arial", 15, FontStyle.Italic);
+            Font Rows_font = new Font("Arial", 8, FontStyle.Regular);
+            Font bill_title = new Font("Arial", 15, FontStyle.Regular);
+            Font warning_font = new Font("Arial", 15, FontStyle.Underline);
+
+            //================
+            //Bill_title+(textSize.Width/2)
+            //================
+
+            // e.Graphics.DrawString(title, bill_title, Brushes.Red, (page_W / 2), top_page_margin);
+            e.Graphics.DrawImage(Properties.Resources.logoooo, left_page_margin, top_page_margin, 150, 150);
+
+
+            // Console.WriteLine(textSize.Width);
+            //Console.WriteLine((page_W / 2)-(textSize.Width/2));
+            //header_rectangle
+            //============================
+            String title = "فاتورة مبيعات", name = "اسم العميل", date = "تاريخ الفاتورة", titl = "عنوان العميل", name2 = "اسم المورد", total = "اجمالى الفاتورة", discount = "الخصم";
+            string warning_name = "استلمت انا الموقع ادناة البضاعة المبينة اعلاه بحالة جيدة وهذا اقرار منى بذلك";
+            string mony_text = "خمسة وعشرون الفا وثلاثمائة واربعة واربعون فقط لا غير";
+            string buer = "توقيع العميل";
+            string seller = "توقيع المورد";
+            string dots = "................";
+            string table_header_text = "          رقم         المنتج                                                                سعرالوحدة            الكمية                 السعر                الوحدة                 كود المنتج          ";
+
+            Size titleSize = TextRenderer.MeasureText(title, bill_title);
+            Size nameSize = TextRenderer.MeasureText(name, myfont);
+            Size titleSize2 = TextRenderer.MeasureText(titl, myfont);
+            Size dateSize = TextRenderer.MeasureText(date, myfont);
+            Size name2Size = TextRenderer.MeasureText(name2, myfont);
+            Size warningSize = TextRenderer.MeasureText(name2, myfont);
+            Size buerSize = TextRenderer.MeasureText(name2, myfont);
+            Size sellerSize = TextRenderer.MeasureText(name2, myfont);
+            //=============
+            e.Graphics.DrawString(title, bill_title, Brushes.Red,490, top_page_margin-12,format);
+
+            //==========================================
+            e.Graphics.DrawString(name, bill_title, Brushes.Red, 825, 50,format);
+            e.Graphics.DrawString("محمد زكريا محمد احمد", Results_font, Brushes.Black, 650, 50, format);
+            e.Graphics.DrawString(titl, bill_title, Brushes.Red, 825, 80,format);
+            e.Graphics.DrawString("الحواتكة-منفلوط-اسيوط", Results_font, Brushes.Black, 650, 80, format);
+            e.Graphics.DrawString(date, bill_title, Brushes.Red, 825, 110,format);
+            e.Graphics.DrawString("18 - 3 - 2018", Results_font, Brushes.Black, 650, 110, format);
+            e.Graphics.DrawString(name2, bill_title, Brushes.Red, 825, 140,format);
+            e.Graphics.DrawString("عمرو فتحى العجل", Results_font, Brushes.Black, 650, 140, format);
+            e.Graphics.DrawString(total, bill_title, Brushes.Red, 825, 170, format);
+            e.Graphics.DrawString("2322223", Results_font, Brushes.Black, 650, 170, format);
+            e.Graphics.DrawString(discount, bill_title, Brushes.Red, 400, 170, format);
+            e.Graphics.DrawString("لايوجد", Results_font, Brushes.Black, 300, 170, format);
+            e.Graphics.DrawString(mony_text, bill_title, Brushes.Red, 825, 205, format);
+
+
+
+
+
+
+            // e.Graphics.DrawRectangle(Pens.White, left_page_margin, top_page_margin, e.PageBounds.Width - left_page_margin * 2, rect_header_h);
+            //============================
+            //body_rectangle
+            //============================
+            int x1_top = col_width + left_page_margin;
+            int x2_top = col_width * 2 + left_page_margin;
+            int x3_top = col_width * 3 + left_page_margin;
+            int x4_top = col_width * 4 + left_page_margin;
+            int x5_top = col_width * 5 + left_page_margin;
+            int x6_top = col_width * 6 + left_page_margin;
+            int x7_top = col_width * 7 + left_page_margin;
+            int x8_top = col_width * 8 + left_page_margin;
+            //========
+            int y_top = top_page_margin * 2 + rect_header_h;
+            // int y2_top = top_page_margin * 2 + rect_header_h;
+            // int y3_top = top_page_margin * 2 + rect_header_h;
+            // int y4_top = top_page_margin * 2 + rect_header_h;
+            int y_bottom = top_page_margin * 2 + rect_header_h + rect_body_h;
+            // int y2_bottom = top_page_margin * 2 + rect_header_h + rect_body_h;
+            // int y3_bottom = top_page_margin * 2 + rect_header_h + rect_body_h;
+            // int y4_bottom = top_page_margin * 2 + rect_header_h + rect_body_h;
+
+
+
+
+
+
+
+
+
+
+
+
+
+            //================================================================
+            //coulmn1
+            e.Graphics.DrawLine(Pens.Black, x1_top, y_top, x1_top, y_bottom);
+            //coulmn2
+            e.Graphics.DrawLine(Pens.Black, x2_top, y_top, x2_top, y_bottom);
+            //coulmn3
+            e.Graphics.DrawLine(Pens.Black, x3_top, y_top, x3_top, y_bottom);
+            //coulmn4
+            e.Graphics.DrawLine(Pens.Black, x4_top, y_top, x4_top, y_bottom);
+            //coulmn6
+            e.Graphics.DrawLine(Pens.Black, x5_top, y_top, x5_top, y_bottom);
+            //coulmn7
+            // e.Graphics.DrawLine(Pens.Black, x6_top, y_top, x6_top, y_bottom);
+            //coulmn8
+            // e.Graphics.DrawLine(Pens.Black, x7_top, y_top, x7_top, y_bottom);
+            //coulmn9
+            e.Graphics.DrawLine(Pens.Black, x8_top, y_top, x8_top, y_bottom);
+
+            //========================================================================
+            e.Graphics.DrawRectangle(Pens.Black, left_page_margin, top_page_margin * 2 + rect_header_h, e.PageBounds.Width - left_page_margin * 2, rect_body_h);
+            
+
+
+            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            {
+
+                // = i.ToString();
+                grid_ID = dataGridView1.Rows[i].Cells[0].Value.ToString();
+                grid_product =     dataGridView1.Rows[i].Cells[1].Value.ToString();
+                grid_unit = "قطعة";// dataGridView1.Rows[i].Cells[0].Value.ToString();
+                grid_one_price = "675";//dataGridView1.Rows[i].Cells[0].Value.ToString();
+                grid_code = "AW2323RT";
+                grid_total_price = "773743";
+                grid_amount = "12";
+
+                //===============================================
+              
+                if (i == 0)
+                {
+                    e.Graphics.DrawLine(Pens.Black, left_page_margin, (top_page_margin * 2 + rect_header_h + row_counter), e.PageBounds.Width - left_page_margin, (top_page_margin * 2 + rect_header_h + row_counter));
+                    e.Graphics.DrawString("رقم", Rows_font, Brushes.Black, 825 - cell_padding_right, top_page_margin * 2 + rect_header_h + 5, format);
+                    e.Graphics.DrawString("المنتج", Rows_font, Brushes.Black, x8_top - cell_padding_right, top_page_margin * 2 + rect_header_h+ cell_padding_top, format);
+                    e.Graphics.DrawString("سعر الوحدة", Rows_font, Brushes.Black, x5_top - cell_padding_right, top_page_margin * 2 + rect_header_h + cell_padding_top, format);
+                    e.Graphics.DrawString("الكمية", Rows_font, Brushes.Black, x4_top - cell_padding_right, top_page_margin * 2 + rect_header_h + cell_padding_top, format);
+                    e.Graphics.DrawString("السعر", Rows_font, Brushes.Black, x3_top - cell_padding_right, top_page_margin * 2 + rect_header_h + cell_padding_top, format);
+                    e.Graphics.DrawString("الوحدة", Rows_font, Brushes.Black, x2_top - cell_padding_right, top_page_margin * 2 + rect_header_h  + cell_padding_top, format);
+                    e.Graphics.DrawString("كود المنتج", Rows_font, Brushes.Black, x1_top - cell_padding_right, top_page_margin * 2 + rect_header_h+ cell_padding_top, format);
+                    //==============================================================================
+                    e.Graphics.DrawString(grid_ID, Rows_font, Brushes.Black, 825 - cell_padding_right, top_page_margin * 2 + rect_header_h + row_counter+cell_padding_top, format);
+                    e.Graphics.DrawString(grid_product, Rows_font, Brushes.Black, x8_top - cell_padding_right, top_page_margin * 2 + rect_header_h + row_counter + cell_padding_top, format);
+                    e.Graphics.DrawString(grid_one_price, Rows_font, Brushes.Black, x5_top - cell_padding_right, top_page_margin * 2 + rect_header_h + row_counter + cell_padding_top, format);
+                    e.Graphics.DrawString(grid_amount, Rows_font, Brushes.Black, x4_top - cell_padding_right, top_page_margin * 2 + rect_header_h + row_counter + cell_padding_top, format);
+                    e.Graphics.DrawString(grid_total_price, Rows_font, Brushes.Black, x3_top - cell_padding_right, top_page_margin * 2 + rect_header_h + row_counter + cell_padding_top, format);
+                    e.Graphics.DrawString(grid_unit, Rows_font, Brushes.Black, x2_top - cell_padding_right, top_page_margin * 2 + rect_header_h + row_counter + cell_padding_top, format);
+                    e.Graphics.DrawString(grid_code, Rows_font, Brushes.Black, x1_top - cell_padding_right, top_page_margin * 2 + rect_header_h + row_counter + cell_padding_top, format);
+                }
+                else
+                {
+
+                    if (i == 28)
+                    {
+                        e.Graphics.DrawLine(Pens.Black, left_page_margin, (top_page_margin * 2 + rect_header_h + row_counter), e.PageBounds.Width - left_page_margin, (top_page_margin * 2 + rect_header_h + row_counter+25));
+                    }
+                    else
+                    {
+                        e.Graphics.DrawLine(Pens.Black, left_page_margin, (top_page_margin * 2 + rect_header_h + row_counter), e.PageBounds.Width - left_page_margin, (top_page_margin * 2 + rect_header_h + row_counter));
+                        //=================================================================
+                        e.Graphics.DrawString(grid_ID, Rows_font, Brushes.Black, 825 - cell_padding_right, top_page_margin * 2 + rect_header_h + row_counter + cell_padding_top, format);
+                        e.Graphics.DrawString(grid_product, Rows_font, Brushes.Black, x8_top - cell_padding_right, top_page_margin * 2 + rect_header_h + row_counter + cell_padding_top, format);
+                        e.Graphics.DrawString(grid_one_price, Rows_font, Brushes.Black, x5_top - cell_padding_right, top_page_margin * 2 + rect_header_h + row_counter + cell_padding_top, format);
+                        e.Graphics.DrawString(grid_amount, Rows_font, Brushes.Black, x4_top - cell_padding_right, top_page_margin * 2 + rect_header_h + row_counter + cell_padding_top, format);
+                        e.Graphics.DrawString(grid_total_price, Rows_font, Brushes.Black, x3_top - cell_padding_right, top_page_margin * 2 + rect_header_h + row_counter + cell_padding_top, format);
+                        e.Graphics.DrawString(grid_unit, Rows_font, Brushes.Black, x2_top - cell_padding_right, top_page_margin * 2 + rect_header_h + row_counter + cell_padding_top, format);
+                        e.Graphics.DrawString(grid_code, Rows_font, Brushes.Black, x1_top - cell_padding_right, top_page_margin * 2 + rect_header_h + row_counter + cell_padding_top, format);
+
+
+
+                    }
+                }
+                // e.Graphics.DrawLine(Pens.Black, X_left, y_left + row_height, X_right, y_right + row_height);
+                row_counter += 25;
+
+            }
+            //============================
+            //footer_rectangle
+            //============================
+            int xxxx = top_page_margin * 3 + rect_header_h + rect_body_h;
+            e.Graphics.DrawRectangle(Pens.Black, left_page_margin, xxxx, e.PageBounds.Width - left_page_margin * 2, rect_footer_h);
+            e.Graphics.DrawString(warning_name, warning_font, Brushes.Red, 150, xxxx + 10);
+            e.Graphics.DrawString(buer, myfont, Brushes.Red, 150, xxxx + 50);
+            e.Graphics.DrawString(seller, myfont, Brushes.Red, 700, xxxx + 50);
+            e.Graphics.DrawString(dots, myfont, Brushes.Red, 150, xxxx + 70);
+            e.Graphics.DrawString(dots, myfont, Brushes.Red, 700, xxxx + 70);
+            //============================
+        }
+ //الفاتورة اعم الحج
+//============================================================================================================
 
 
 
